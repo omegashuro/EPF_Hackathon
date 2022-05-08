@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="dist/css/style.css">
 	<script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap">
@@ -34,7 +37,10 @@
 	                        <h1 class="hero-title mt-0">We power Innovation because we are Innovators</h1>
 	                        
                             <p class="hero-paragraph">The best ideas come as jokes.</p>
-	                        <div class="hero-cta"><a class="button button-primary" href="#">Sign in</a><a class="button" href="#">Get in touch</a></div>
+                            
+	                            <div class="hero-cta"> <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <a class="button" href="#">Get in touch</a>
+                                <a class="button" href="../../Youth/Youth.html">Demo e.g.</a>
+                        </div>
 						</div>
 						<div class="hero-figure anime-element">
 							<svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
@@ -236,6 +242,22 @@
             </div>
         </footer>
     </div>
+    <script>
+        function onSignIn(googleUser) {
+          // Useful data for your client-side scripts:
+          var profile = googleUser.getBasicProfile();
+          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+          console.log('Full Name: ' + profile.getName());
+          console.log('Given Name: ' + profile.getGivenName());
+          console.log('Family Name: ' + profile.getFamilyName());
+          console.log("Image URL: " + profile.getImageUrl());
+          console.log("Email: " + profile.getEmail());
+  
+          // The ID token you need to pass to your backend:
+          var id_token = googleUser.getAuthResponse().id_token;
+          console.log("ID Token: " + id_token);
+        }
+      </script>
 
     <script src="dist/js/main.min.js"></script>
 </body>
